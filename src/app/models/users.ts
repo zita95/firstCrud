@@ -1,10 +1,12 @@
 export interface User {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   email: string;
-  age: number;
-  groupID: number;
+  age?: number;
+  role?: string;
+  groupID?: number;
   created_at?: string;
   updated_at?: string;
+  paassword?: string
 }

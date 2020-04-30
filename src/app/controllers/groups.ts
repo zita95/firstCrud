@@ -1,6 +1,15 @@
 import { Group } from '../models/groups';
 import { database } from '../../lib/database';
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
+
+
+export const auth = (req: Request, res: Response, next: NextFunction) => {
+  if (res.locals.user.role === 'admin' || res.locals.user.role === 'user') {
+    next();
+  } else {
+    res.sendStatus(403);
+  }
+}
 
 export const index = async (req: Request, res: Response) => {
   try {
